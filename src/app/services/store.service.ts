@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../environment/environment.prod';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Store } from '../models/store';
+import { Stock } from '../models/stock';
+import { ConsumptionRequest } from '../models/consumption-request';
+import { StoreHistory } from '../models/store-history';
 
 @Injectable({
   providedIn: 'root'
@@ -42,6 +45,30 @@ export class StoreService {
       `${this.baseUrl}/stores/${storeId}/products?${category}&page=${page}&size=${size}`,
       { params: params }
     );
+  }
+
+  addProductToStock(stock: Stock): Observable<Store> {
+    let headers = new HttpHeaders({
+      'consumerEmail': 'demo-email@email.com'
+    });
+
+    return this.http.post<Store>(`${this.baseUrl}/stocks`, { stock }, { headers: headers });
+  }
+
+  consumeProductFromStock(consumeRequest: ConsumptionRequest): Observable<void> {
+    return this.http.put<void>(`${this.baseUrl}/stocks/consume`, { consumeRequest });
+  }
+
+  getAllProductConsumptions(): Observable<StoreHistory[]> {
+    return this.http.get<StoreHistory[]>(`${this.baseUrl}/consumptions`);
+  }
+
+  getProductConsumptionByStoreId(storeId: number): Observable<StoreHistory[]> {
+    return this.http.get<StoreHistory[]>(`${this.baseUrl}/consumptions/${storeId}`);
+  }
+
+  gitStoreConsumptionByProductId(storeId: number, productId: number, page: number, size: number): Observable<StoreHistory[]> {
+    return this.http.get<StoreHistory[]>(`${this.baseUrl}/consumptions/${storeId}/products/${productId}?page=${page}&size=${size}`);
   }
 
 }
