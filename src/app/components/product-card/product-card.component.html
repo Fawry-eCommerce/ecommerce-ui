@@ -1,0 +1,14 @@
+<div class="card">
+    <div class="img-container">
+        <img [src]="product.imageUrl" class="card-img-top" [alt]="product.name">
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">{{ product.name }}</h5>
+        <h6>{{ product.description }}</h6>
+        <p class="card-text">${{ product.price }}</p>
+        <div class="d-flex justify-content-between">
+            <a class="btn btn-primary">Buy Now</a>
+            <a class="btn btn-secondary">More Details</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+.bg-gradient-primary {
+  background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+}
+
+.navbar-brand,
+.nav-link,
+.btn-outline-light {
+  transition: color 0.3s ease;
+}
+
+.navbar-brand:hover,
+.nav-link:hover,
+.btn-outline-light:hover {
+  color: #ffdd57;
+}
+
+.form-control {
+  border: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-control:focus {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-outline-light {
+  border: 1px solid #fff;
+}
