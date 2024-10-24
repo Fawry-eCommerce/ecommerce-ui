@@ -21,6 +21,7 @@
                 <td class="text-center">{{ store.location }}</td>
                 <td class="text-center">
                     <div class="icon-container">
+                        <a class="btn btn-secondary btn-sm" [routerLink]="store.id">...</a>
                         <button class="icon-button u-btn" (click)="openUpdateModal(store)">
                             <i class="bi bi-pencil-square" title="Update"></i>
                         </button>

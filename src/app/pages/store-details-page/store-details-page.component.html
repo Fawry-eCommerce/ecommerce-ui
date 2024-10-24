@@ -1,0 +1,16 @@
+<div class="container my-5">
+    <mat-card class="store-details-card">
+        <mat-card-header class="centered-header">
+            <div class="header-content">
+                <mat-card-title>{{ store.name }}</mat-card-title>
+                <mat-card-subtitle>{{ store.location }}</mat-card-subtitle>
+            </div>
+        </mat-card-header>
+        <mat-card-actions>
+            <button mat-button color="primary" (click)="openUpdateModal(store)">Edit</button>
+            <button mat-button color="warn" (click)="deleteStore(store.id)">Delete</button>
+        </mat-card-actions>
+    </mat-card>
+</div>
+
+<app-products-list [products]="products" title="Store {{ store.name }} Products"></app-products-list>

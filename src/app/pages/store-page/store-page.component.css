@@ -25,46 +25,25 @@ h2 {
     border-color: #004085;
 }
 
-.custom-table {
-    border-collapse: collapse;
-    width: 100%;
-    margin: 0 auto;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    overflow: hidden;
+.store-card {
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.custom-table th, .custom-table td {
-    padding: 15px;
-    text-align: center;
-    border-bottom: 1px solid #ddd;
+.store-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.custom-table th {
-    background-color: #007bff;
-    color: white;
+.card-title {
+    font-size: 1.25rem;
     font-weight: bold;
-}
-
-.custom-table tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-
-.custom-table tr:hover {
-    background-color: #ddd;
-}
-
-.custom-table td {
     color: #333;
 }
 
-.custom-table th, .custom-table td {
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.custom-table th:hover, .custom-table td:hover {
-    background-color: #0056b3;
-    color: white;
+.card-text {
+    font-size: 1rem;
+    color: #666;
 }
 
 .icon-container {
@@ -72,6 +51,7 @@ h2 {
     gap: 10px;
     justify-content: center;
     align-items: center;
+    margin-top: 10px;
 }
 
 .icon-button {
@@ -98,4 +78,23 @@ h2 {
 
 .u-btn i:hover {
     color: #28a745;
+}
+
+.btn-info {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-info:hover {
+    background-color: #138496;
+    border-color: #117a8b;
+}
+
+.btn-sm {
+    padding: 5px 10px;
+    font-size: 0.875rem;
 }

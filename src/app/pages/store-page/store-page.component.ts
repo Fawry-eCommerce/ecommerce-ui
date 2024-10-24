@@ -7,11 +7,12 @@ import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { StoreModalComponent } from "../../components/store-modal/store-modal.component";
 import { MatDialog } from '@angular/material/dialog';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-store-page',
   standalone: true,
-  imports: [NgFor, StoreCardComponent, TableModule, ButtonModule, StoreModalComponent],
+  imports: [NgFor, StoreCardComponent, TableModule, ButtonModule, StoreModalComponent, RouterModule],
   templateUrl: './store-page.component.html',
   styleUrl: './store-page.component.css'
 })
@@ -23,7 +24,7 @@ export class StorePageComponent {
   isUpdateMode: boolean = true;
   modalVisible: boolean = false;
 
-  constructor(private storeService: StoreService, private dialog: MatDialog,) { }
+  constructor(private storeService: StoreService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.loadStores();

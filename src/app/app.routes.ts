@@ -3,6 +3,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard.component';
 import { adminGuard } from './guards/admin.guard';
 import { StorePageComponent } from './pages/store-page/store-page.component';
+import { StoreDetailsPageComponent } from './pages/store-details-page/store-details-page.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -13,7 +14,8 @@ export const routes: Routes = [
     { path: 'products', children: [
         // { path: '', component: ProductsComponent },
     ] },
-    { path: 'stores', component: StorePageComponent, children: [
-        
+    { path: 'stores', children: [
+        { path: '', component: StorePageComponent },
+        { path: ':id', component: StoreDetailsPageComponent }
     ] }
 ];

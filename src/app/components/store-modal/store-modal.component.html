@@ -36,7 +36,7 @@
         Cancel
     </button>
     <button type="submit" class="btn btn-primary" (click)="onSubmit()" [disabled]="storeForm.invalid">
-        <ng-container *ngIf="data; else StoreModalCancel">
+        <ng-container *ngIf="isUpdateMode; else StoreModalCancel">
             Update
         </ng-container>
         <ng-template #StoreModalCancel>

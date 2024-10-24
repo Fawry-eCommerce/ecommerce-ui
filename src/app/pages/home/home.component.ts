@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { ProductCardComponent } from "../../components/product-card/product-card.component";
 import { NgFor } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { ProductsListComponent } from "../../components/products-list/products-list.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [ProductCardComponent, NgFor, RouterModule],
+  imports: [ProductCardComponent, NgFor, RouterModule, ProductsListComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

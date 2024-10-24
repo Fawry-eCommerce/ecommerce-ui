@@ -6,6 +6,7 @@ import { Store } from '../../models/store/store';
 import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
 import { NgIf } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-store-modal',
@@ -30,6 +31,7 @@ export class StoreModalComponent implements OnInit {
   isUpdateMode: boolean;
 
   constructor(
+    private router: Router, 
     private fb: FormBuilder,
     private storeService: StoreService,
     public dialog: MatDialog,
@@ -61,10 +63,10 @@ export class StoreModalComponent implements OnInit {
 
   createStrore(storeData: any) {
     this.storeService.createStore(storeData).subscribe({
-      next: () => {
+      next: (res) => {
         console.log('Store created successfully');
         this.dialog.closeAll();
-        window.location.reload();
+        this.router.navigate(['/stores', res.id]);
       },
       error: (err) => {
         console.error('Error creating store', err);
