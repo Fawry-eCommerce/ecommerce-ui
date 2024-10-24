@@ -1,27 +1,46 @@
 # EcommerceUi
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.3.
+![Ecommerce-UI](https://github.com/user-attachments/assets/5567e1d6-0403-4616-a94e-6f5c80b6ce12)
 
-## Development server
+This project is an eCommerce user interface built with Angular. It provides a modern and responsive design for online shopping, including features like product listings, store management, and user authentication.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Table of Contents
 
-## Code scaffolding
+- [Features](#features)
+- [Screenshots](#screenshots)
+- [Installation](#installation)
+- [Contributing](#contributing)
+- [License](#license)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Features
 
-## Build
+- Responsive design
+- Product listings
+- Store management
+- User authentication
+- Modern UI with Angular Material and PrimeNG
+- Integration with backend services
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Screenshots
 
-## Running unit tests
+### Home Page
+![home-page](https://github.com/user-attachments/assets/5567e1d6-0403-4616-a94e-6f5c80b6ce12)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+![home-page-2](https://github.com/user-attachments/assets/22314ba7-157e-4d6d-8d3f-a1206a1f4e3c)
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Product Listing
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+### Store List
+![stores-page](https://github.com/user-attachments/assets/ec283eff-e04f-4c2c-bc93-a067744f1fe0)
+
+
+## Installation
+
+To get started with the project, clone the repository and install the dependencies:
+
+```sh
+git clone https://github.com/Fawry-eCommerce/ecommerce-ui.git
+cd ecommerce-ui
+npm install
