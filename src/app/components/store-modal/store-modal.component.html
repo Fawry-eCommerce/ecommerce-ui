@@ -1,0 +1,46 @@
+<mat-dialog-content class="store-dialog-content">
+    <h2 class="dialog-title text-center">
+        <ng-container *ngIf="isUpdateMode; else StoreModalTitle">
+            Update Store
+        </ng-container>
+        <ng-template #StoreModalTitle>
+            Create Store
+        </ng-template>
+    </h2>
+    <form [formGroup]="storeForm" class="mt-4">
+        <div class="form-group">
+            <label for="name" class="form-label">Name</label>
+            <div class="input-wrapper">
+                <input type="text" required id="name" class="form-control" formControlName="name" />
+                <mat-icon *ngIf="!storeForm.get('name')?.errors" class="valid-icon">check_circle</mat-icon>
+            </div>
+            <div *ngIf="storeForm.get('name')?.errors && storeForm.get('name')?.touched">
+                <small class="text-danger">Name is required.</small>
+            </div>
+        </div>
+        <div class="form-group mt-4">
+            <label for="location" class="form-label">Location</label>
+            <div class="input-wrapper">
+                <input type="text" required id="location" class="form-control" formControlName="location" />
+                <mat-icon *ngIf="!storeForm.get('location')?.errors" class="valid-icon">check_circle</mat-icon>
+            </div>
+            <div *ngIf="storeForm.get('location')?.errors && storeForm.get('location')?.touched">
+                <small class="text-danger">Location is required.</small>
+            </div>
+        </div>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions class="dialog-actions justify-content-end">
+    <button type="button" class="btn btn-light me-2" (click)="closeModal()">
+        Cancel
+    </button>
+    <button type="submit" class="btn btn-primary" (click)="onSubmit()" [disabled]="storeForm.invalid">
+        <ng-container *ngIf="data; else StoreModalCancel">
+            Update
+        </ng-container>
+        <ng-template #StoreModalCancel>
+            Create
+        </ng-template>
+    </button>
+</mat-dialog-actions>

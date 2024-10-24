@@ -8,7 +8,6 @@
   transition: color 0.3s ease;
 }
 
-.navbar-brand:hover,
 .nav-link:hover,
 .btn-outline-light:hover {
   color: #ffdd57;
@@ -25,4 +24,9 @@
 
 .btn-outline-light {
   border: 1px solid #fff;
+}
+
+.nav-link.active {
+  color: #ffdd57; /* Change to your desired active color */
+  font-weight: bold;
 }

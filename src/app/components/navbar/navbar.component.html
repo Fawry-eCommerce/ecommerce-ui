@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-gradient-primary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="">
       <i class="bi bi-shop"></i> Fawry Ecommerce
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -10,27 +10,27 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" routerLink="home" aria-current="page">
+          <a class="nav-link active" routerLink="home" routerLinkActive="active" aria-current="page">
             <i class="bi bi-house-door"></i> Home
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link"  routerLink="products">
+          <a class="nav-link"  routerLink="products" routerLinkActive="active">
             <i class="bi bi-box-seam"></i> Products
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a class="nav-link" routerLink="stores" routerLinkActive="active">
             <i class="bi bi-shop-window"></i> Stores
           </a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" routerLinkActive="active" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <i class="bi bi-people"></i> Users
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item"  routerLink="admin"><i class="bi bi-person-badge"></i> Admins</a></li>
-            <li><a class="dropdown-item"  routerLink="customers"><i class="bi bi-person"></i> Customers</a></li>
+            <li><a class="dropdown-item"  routerLink="admin" routerLinkActive="active"><i class="bi bi-person-badge"></i> Admins</a></li>
+            <li><a class="dropdown-item"  routerLink="customers" routerLinkActive="active"><i class="bi bi-person"></i> Customers</a></li>
           </ul>
         </li>
       </ul>

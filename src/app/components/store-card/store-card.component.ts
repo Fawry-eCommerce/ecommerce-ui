@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Store } from '../../models/store';
-import { StoreService } from '../../services/store.service';
+import { Component, Input } from '@angular/core';
+import { Store } from '../../models/store/store';
 
 @Component({
   selector: 'app-store-card',
@@ -9,28 +8,8 @@ import { StoreService } from '../../services/store.service';
   templateUrl: './store-card.component.html',
   styleUrl: './store-card.component.css'
 })
-export class StoreCardComponent implements OnInit {
+export class StoreCardComponent {
 
-  stores: Store[] = [];
-  page: number = 0;
-  size: number = 20;
-
-  constructor(private storeService: StoreService) {}
-
-  ngOnInit(): void {
-    this.loadStores();
-  }
-
-  loadStores(): void {
-    this.storeService.getStores(this.page, this.size).subscribe({
-      next: (stores) => {
-        this.stores = stores;
-      },
-      error: (err) => {
-        console.error(err);
-      }
-    }
-    );
-  }
+  @Input() store!: Store;
 
 }

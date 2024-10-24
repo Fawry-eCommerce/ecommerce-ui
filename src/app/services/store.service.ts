@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../environment/environment.prod';
+import { environment } from '../environment/environment';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Store } from '../models/store';
-import { Stock } from '../models/stock';
-import { ConsumptionRequest } from '../models/consumption-request';
-import { StoreHistory } from '../models/store-history';
+import { Store } from '../models/store/store';
+import { Stock } from '../models/store/stock';
+import { ConsumptionRequest } from '../models/store/consumption-request';
+import { StoreHistory } from '../models/store/store-history';
+import { Page } from '../models/page';
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +17,8 @@ export class StoreService {
 
   constructor(private http: HttpClient) { }
 
-  getStores(page: number, size: number): Observable<Store[]> {
-    return this.http.get<Store[]>(`${this.baseUrl}/stores?page=${page}&size=${size}`);
+  getStores(page: number, size: number): Observable<Page<Store>> {
+    return this.http.get<Page<Store>>(`${this.baseUrl}/stores?page=${page}&size=${size}`);
   }
 
   getStoreById(id: number): Observable<Store> {
@@ -36,12 +37,12 @@ export class StoreService {
     return this.http.delete<Store>(`${this.baseUrl}/stores/${id}`);
   }
 
-  searchProductsByStoreId(storeId: number, name: string, category: string, page: number, size: number): Observable<Store> {
+  searchProductsByStoreId(storeId: number, name: string, category: string, page: number, size: number): Observable<Page<Store>> {
     let params = new HttpParams()
       .append('name', name)
       .append('category', category);
       
-    return this.http.get<Store>(
+    return this.http.get<Page<Store>>(
       `${this.baseUrl}/stores/${storeId}/products?${category}&page=${page}&size=${size}`,
       { params: params }
     );
@@ -59,16 +60,16 @@ export class StoreService {
     return this.http.put<void>(`${this.baseUrl}/stocks/consume`, { consumeRequest });
   }
 
-  getAllProductConsumptions(): Observable<StoreHistory[]> {
-    return this.http.get<StoreHistory[]>(`${this.baseUrl}/consumptions`);
+  getAllProductConsumptions(): Observable<Page<StoreHistory>> {
+    return this.http.get<Page<StoreHistory>>(`${this.baseUrl}/consumptions`);
   }
 
-  getProductConsumptionByStoreId(storeId: number): Observable<StoreHistory[]> {
-    return this.http.get<StoreHistory[]>(`${this.baseUrl}/consumptions/${storeId}`);
+  getProductConsumptionByStoreId(storeId: number): Observable<Page<StoreHistory>> {
+    return this.http.get<Page<StoreHistory>>(`${this.baseUrl}/consumptions/${storeId}`);
   }
 
-  gitStoreConsumptionByProductId(storeId: number, productId: number, page: number, size: number): Observable<StoreHistory[]> {
-    return this.http.get<StoreHistory[]>(`${this.baseUrl}/consumptions/${storeId}/products/${productId}?page=${page}&size=${size}`);
+  gitStoreConsumptionByProductId(storeId: number, productId: number, page: number, size: number): Observable<Page<StoreHistory>> {
+    return this.http.get<Page<StoreHistory>>(`${this.baseUrl}/consumptions/${storeId}/products/${productId}?page=${page}&size=${size}`);
   }
 
 }

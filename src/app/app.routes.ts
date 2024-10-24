@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard.component';
 import { adminGuard } from './guards/admin.guard';
+import { StorePageComponent } from './pages/store-page/store-page.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -12,7 +13,7 @@ export const routes: Routes = [
     { path: 'products', children: [
         // { path: '', component: ProductsComponent },
     ] },
-    { path: 'stores', children: [
-        // { path: '', component: StoreConponent },
+    { path: 'stores', component: StorePageComponent, children: [
+        
     ] }
 ];

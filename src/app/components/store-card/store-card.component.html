@@ -1,1 +1,12 @@
-<p>store-card works!</p>
+<div class="card">
+    <div class="img-container">
+        <img src="/store-image.jpg" class="card-img-top" [alt]="store.name">
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">{{ store.name }}</h5>
+        <p class="card-text">${{ store.location }}</p>
+        <div class="d-flex justify-content-between">
+            <a class="btn btn-primary">More Details</a>
+        </div>
+    </div>
+</div>
