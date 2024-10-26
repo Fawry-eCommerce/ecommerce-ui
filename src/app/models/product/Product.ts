@@ -9,4 +9,5 @@ export interface Product {
     imageURL: string;
     description: string;
     categpruModel: Cateogry;
+    stockQuantity: number;
 }

@@ -4,6 +4,7 @@ import { CurrencyPipe, NgFor } from '@angular/common';
 import { TableModule } from 'primeng/table';
 import { TagModule } from 'primeng/tag';
 import { Product } from '../../models/product/Product';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-products-table',
@@ -13,7 +14,8 @@ import { Product } from '../../models/product/Product';
     NgFor,
     TableModule,
     CurrencyPipe,
-    TagModule
+    TagModule,
+    FormsModule
   ],
   templateUrl: './products-table.component.html',
   styleUrl: './products-table.component.css'

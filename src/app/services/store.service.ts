@@ -51,12 +51,12 @@ export class StoreService {
     );
   }
 
-  addProductToStock(stock: Stock): Observable<Store> {
+  addProductToStock(stock: Stock): Observable<Stock> {
     let headers = new HttpHeaders({
       'consumerEmail': 'demo-email@email.com'
     });
 
-    return this.http.post<Store>(`${this.baseUrl}/stocks`, stock, { headers: headers });
+    return this.http.post<Stock>(`${this.baseUrl}/stocks`, stock, { headers: headers });
   }
 
   consumeProductFromStock(consumeRequest: ConsumptionRequest): Observable<void> {

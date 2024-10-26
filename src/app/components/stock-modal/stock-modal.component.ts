@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
 import { NgIf } from '@angular/common';
@@ -29,6 +29,7 @@ export class StockModalComponent implements OnInit {
 
   stockForm!: FormGroup;
   isUpdateMode: boolean = false;
+  @Output() successStockResponse = new EventEmitter<Stock>();
 
   constructor(
     private router: Router,
@@ -62,9 +63,9 @@ export class StockModalComponent implements OnInit {
       quantity: this.stockForm.value.quantity
     }
     this.storeService.addProductToStock(stockBody).subscribe({
-      next: () => {
+      next: (res) => {
         this.dialog.closeAll();
-        this.router.navigate(['/stores', this.data.storeId]);
+        this.router.navigate(['/stores', res.storeId]);
       },
       error: (err) => {
         console.error(err);

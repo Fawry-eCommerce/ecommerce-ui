@@ -11,6 +11,7 @@
                         <th>Category</th>
                         <th>Image</th>
                         <th>Description</th>
+                        <th>Stock</th>
                         <th>Actions</th>
                     </tr>
                 </ng-template>
@@ -31,14 +32,15 @@
                                 {{ product.description }}
                             }
                         </td>
+                        <td>{{ product.stockQuantity }}</td>
                         <td>
                             <div class="button-group">
-                                <button class="btn btn-success btn-sm" (click)="emitProductId(product.id)">
-                                    <i class="fas fa-plus-circle"></i> + stock
+                                <button class="btn btn-success btn-sm m-2" (click)="emitProductId(product.id)">
+                                    <i class="fas fa-plus-circle"></i> +
                                 </button>
-                                <button class="btn btn-info btn-sm">
-                                    <i class="fas fa-info-circle"></i> more
-                                </button>
+                                <a class="btn btn-info btn-sm" href="/products/{{product.id}}">
+                                    <i class="fas fa-info-circle"></i> ..
+                                </a>
                             </div>
                         </td>
                     </tr>
