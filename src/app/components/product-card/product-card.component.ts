@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
+import { Product } from '../../models/product/Product';
 
 @Component({
   selector: 'app-product-card',
@@ -10,5 +11,5 @@ import { CardModule } from 'primeng/card';
   styleUrl: './product-card.component.css'
 })
 export class ProductCardComponent {
-  @Input() product: any; // TODO: Define the type of the product
+  @Input() product!: Product; // TODO: Define the type of the product
 }

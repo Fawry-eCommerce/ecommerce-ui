@@ -4,6 +4,7 @@ import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard
 import { adminGuard } from './guards/admin.guard';
 import { StorePageComponent } from './pages/store-page/store-page.component';
 import { StoreDetailsPageComponent } from './pages/store-details-page/store-details-page.component';
+import { ProductsPageComponent } from './pages/products-page/products-page.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -12,7 +13,7 @@ export const routes: Routes = [
         { path: 'dashboard', component: AdminDashboardComponent },
     ], canActivate: [adminGuard] },
     { path: 'products', children: [
-        // { path: '', component: ProductsComponent },
+        { path: '', component: ProductsPageComponent },
     ] },
     { path: 'stores', children: [
         { path: '', component: StorePageComponent },

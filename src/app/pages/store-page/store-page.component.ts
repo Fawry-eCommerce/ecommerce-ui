@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Store } from '../../models/store/store';
 import { StoreService } from '../../services/store.service';
 import { StoreCardComponent } from "../../components/store-card/store-card.component";
@@ -8,11 +8,19 @@ import { ButtonModule } from 'primeng/button';
 import { StoreModalComponent } from "../../components/store-modal/store-modal.component";
 import { MatDialog } from '@angular/material/dialog';
 import { RouterModule } from '@angular/router';
+import { TabViewModule } from 'primeng/tabview';
 
 @Component({
   selector: 'app-store-page',
   standalone: true,
-  imports: [NgFor, StoreCardComponent, TableModule, ButtonModule, StoreModalComponent, RouterModule],
+  imports: [
+    NgFor,
+    StoreCardComponent,
+    TableModule,
+    ButtonModule,
+    StoreModalComponent,
+    RouterModule
+  ],
   templateUrl: './store-page.component.html',
   styleUrl: './store-page.component.css'
 })

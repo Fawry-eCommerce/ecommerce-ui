@@ -7,13 +7,14 @@ import { Stock } from '../models/store/stock';
 import { ConsumptionRequest } from '../models/store/consumption-request';
 import { StoreHistory } from '../models/store/store-history';
 import { Page } from '../models/page';
+import { Product } from '../models/product/Product';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StoreService {
 
-  baseUrl: string = `${environment.apiUrl}/store-api`;
+  baseUrl: string = `${environment.apiUrl}:8005/store-api`;
 
   constructor(private http: HttpClient) { }
 
@@ -37,13 +38,15 @@ export class StoreService {
     return this.http.delete<Store>(`${this.baseUrl}/stores/${id}`);
   }
 
-  searchProductsByStoreId(storeId: number, name: string, category: string, page: number, size: number): Observable<Page<Store>> {
+  searchProductsByStoreId(storeId: number, name: string = '', category: string = '', code: string = '', page: number, size: number): Observable<Product[]> {
     let params = new HttpParams()
+      .append('storeId', storeId)
       .append('name', name)
-      .append('category', category);
+      .append('category', category)
+      .append('code', code);
       
-    return this.http.get<Page<Store>>(
-      `${this.baseUrl}/stores/${storeId}/products?${category}&page=${page}&size=${size}`,
+    return this.http.get<Product[]>(
+      `${this.baseUrl}/stocks/search-products?page=${page}&size=${size}`,
       { params: params }
     );
   }
