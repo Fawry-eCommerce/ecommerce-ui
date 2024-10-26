@@ -1,0 +1,23 @@
+.add-action {
+    color: green;
+    font-weight: bold;
+}
+
+.consume-action {
+    color: red;
+    font-weight: bold;
+}
+
+.add-action-bg {
+    background-color: #e8f5e9; /* Light green background */
+    color: green;
+    font-weight: bold;
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+
+.consume-action-bg {
+    background-color: #ffebee; /* Light red background */
+    color: red;
+    font-weight: bold;
+}
