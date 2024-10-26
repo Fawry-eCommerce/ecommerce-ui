@@ -35,6 +35,10 @@ This project is an eCommerce user interface built with Angular. It provides a mo
 ### Store List
 ![stores-page](https://github.com/user-attachments/assets/ec283eff-e04f-4c2c-bc93-a067744f1fe0)
 
+### Store Details
+![store-details-1](https://github.com/user-attachments/assets/410f86fc-d7f7-468b-b9e8-0c8fde332ae5)
+## Update Store Modal
+![Update Store modal](https://github.com/user-attachments/assets/ed69030a-8579-4c23-a1ac-dfc3963f629a)
 
 ## Installation
 
