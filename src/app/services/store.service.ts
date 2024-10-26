@@ -56,11 +56,11 @@ export class StoreService {
       'consumerEmail': 'demo-email@email.com'
     });
 
-    return this.http.post<Store>(`${this.baseUrl}/stocks`, { stock }, { headers: headers });
+    return this.http.post<Store>(`${this.baseUrl}/stocks`, stock, { headers: headers });
   }
 
   consumeProductFromStock(consumeRequest: ConsumptionRequest): Observable<void> {
-    return this.http.put<void>(`${this.baseUrl}/stocks/consume`, { consumeRequest });
+    return this.http.put<void>(`${this.baseUrl}/stocks/consume`, consumeRequest);
   }
 
   getAllProductConsumptions(): Observable<Page<StoreHistory>> {

@@ -13,4 +13,4 @@
     </mat-card>
 </div>
 
-<app-products-table [products]="products" title="Store {{ store.name }} Products"></app-products-table>
+<app-products-table [products]="products" title="Store {{ store.name }} Products" (productIdEmitter)="handleProductId($event)"></app-products-table>

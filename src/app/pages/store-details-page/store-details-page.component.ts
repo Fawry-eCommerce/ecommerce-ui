@@ -9,6 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ProductsListComponent } from "../../components/products-list/products-list.component";
 import { Product } from '../../models/product/Product';
 import { ProductsTableComponent } from "../../components/products-table/products-table.component";
+import { StockModalComponent } from '../../components/stock-modal/stock-modal.component';
 
 @Component({
   selector: 'app-store-details-page',
@@ -24,7 +25,7 @@ export class StoreDetailsPageComponent implements OnInit {
   products!: Product[];
   page: number = 0;
   size: number = 10;
-  
+
   constructor(
     private router: Router,
     private activatedRouter: ActivatedRoute,
@@ -77,7 +78,7 @@ export class StoreDetailsPageComponent implements OnInit {
     }
   }
 
-  getStoreProducts(page: number, size: number) {    
+  getStoreProducts(page: number, size: number) {
     this.storeService.searchProductsByStoreId(this.storeId, "", "", "", page, size).subscribe({
       next: (products) => {
         this.products = products;
@@ -85,6 +86,22 @@ export class StoreDetailsPageComponent implements OnInit {
       error: (error: any) => {
         console.error(error);
       }
+    });
+  }
+
+  handleProductId(productId: number): void {
+    this.openStockModal(productId);
+  }
+
+  openStockModal(productId: number): void {
+    this.dialog.open(StockModalComponent, {
+      data: {
+        storeId: Number(this.storeId),
+        productId: productId
+      },
+      width: '50%',
+      height: 'auto',
+      disableClose: true
     });
   }
 

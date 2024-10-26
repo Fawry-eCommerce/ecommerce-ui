@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ProductCardComponent } from "../product-card/product-card.component";
 import { CurrencyPipe, NgFor } from '@angular/common';
 import { TableModule } from 'primeng/table';
@@ -22,8 +22,13 @@ export class ProductsTableComponent {
 
   @Input() products: Product[] = [];
   @Input() title = 'All Products';
+  @Output() productIdEmitter = new EventEmitter<number>();
 
   constructor() { 
+  }
+
+  emitProductId(productId: number): void {
+    this.productIdEmitter.emit(productId);
   }
 
 }
