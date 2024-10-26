@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { StoreService } from '../../services/store.service';
 import { Store } from '../../models/store/store';
 import { MatCardModule } from '@angular/material/card';
@@ -14,7 +14,13 @@ import { StockModalComponent } from '../../components/stock-modal/stock-modal.co
 @Component({
   selector: 'app-store-details-page',
   standalone: true,
-  imports: [MatCardModule, MatButtonModule, ProductsListComponent, ProductsTableComponent],
+  imports: [
+    MatCardModule,
+    MatButtonModule,
+    ProductsListComponent,
+    ProductsTableComponent,
+    RouterLink
+  ],
   templateUrl: './store-details-page.component.html',
   styleUrl: './store-details-page.component.css'
 })
@@ -25,6 +31,8 @@ export class StoreDetailsPageComponent implements OnInit {
   products!: Product[];
   page: number = 0;
   size: number = 10;
+  totalElements: number = 0;
+  totalPages: number = 0;
 
   constructor(
     private router: Router,

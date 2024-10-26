@@ -67,8 +67,8 @@ export class StoreService {
     return this.http.get<Page<StoreHistory>>(`${this.baseUrl}/consumptions`);
   }
 
-  getProductConsumptionByStoreId(storeId: number): Observable<Page<StoreHistory>> {
-    return this.http.get<Page<StoreHistory>>(`${this.baseUrl}/consumptions/${storeId}`);
+  getProductConsumptionByStoreId(storeId: number, page: number, size: number): Observable<Page<StoreHistory>> {
+    return this.http.get<Page<StoreHistory>>(`${this.baseUrl}/consumptions/${storeId}?page=${page}&size=${size}`);
   }
 
   gitStoreConsumptionByProductId(storeId: number, productId: number, page: number, size: number): Observable<Page<StoreHistory>> {

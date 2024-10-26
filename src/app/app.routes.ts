@@ -6,6 +6,7 @@ import { StorePageComponent } from './pages/store-page/store-page.component';
 import { StoreDetailsPageComponent } from './pages/store-details-page/store-details-page.component';
 import { ProductsPageComponent } from './pages/products-page/products-page.component';
 import { ProductDetailsPageComponent } from './pages/product-details-page/product-details-page.component';
+import { StoreHistoryPageComponent } from './pages/store-history-page/store-history-page.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -19,6 +20,7 @@ export const routes: Routes = [
     ] },
     { path: 'stores', children: [
         { path: '', component: StorePageComponent },
-        { path: ':id', component: StoreDetailsPageComponent }
+        { path: ':id', component: StoreDetailsPageComponent },
+        { path: ':id/history', component: StoreHistoryPageComponent }
     ] }
 ];

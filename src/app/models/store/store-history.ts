@@ -6,6 +6,6 @@ export interface StoreHistory {
     storeId: number;
     quantityChanged: number;
     consumerEmail: string;
-    consumptionType: ConsumptionType;
+    actionType: ConsumptionType;
     createdAt: string;
 }

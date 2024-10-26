@@ -9,6 +9,7 @@ import { StoreModalComponent } from "../../components/store-modal/store-modal.co
 import { MatDialog } from '@angular/material/dialog';
 import { RouterModule } from '@angular/router';
 import { TabViewModule } from 'primeng/tabview';
+import { PaginatorComponent } from '../../components/pagination/paginatoin.component';
 
 @Component({
   selector: 'app-store-page',
@@ -19,7 +20,8 @@ import { TabViewModule } from 'primeng/tabview';
     TableModule,
     ButtonModule,
     StoreModalComponent,
-    RouterModule
+    RouterModule,
+    PaginatorComponent
   ],
   templateUrl: './store-page.component.html',
   styleUrl: './store-page.component.css'
@@ -29,6 +31,8 @@ export class StorePageComponent {
   stores: Store[] = [];
   page: number = 0;
   size: number = 10;
+  totalElements: number = 0;
+  totalPages: number = 0;
   isUpdateMode: boolean = true;
   modalVisible: boolean = false;
 
@@ -41,6 +45,9 @@ export class StorePageComponent {
   loadStores(): void {
     this.storeService.getStores(this.page, this.size).subscribe({
       next: (stores) => {
+        this.page = stores.number;
+        this.size = stores.size;
+        this.totalElements = stores.totalElements;
         this.stores = stores.content;
       },
       error: (err) => {
@@ -85,6 +92,12 @@ export class StorePageComponent {
       height: 'auto',
       disableClose: true
     });
+  }
+
+  onPageChange($event: any) {
+    this.page = $event.pageIndex;
+    this.size = $event.pageSize;
+    this.loadStores();
   }
 
 }

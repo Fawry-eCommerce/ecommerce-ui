@@ -5,6 +5,7 @@ import { TableModule } from 'primeng/table';
 import { TagModule } from 'primeng/tag';
 import { Product } from '../../models/product/Product';
 import { FormsModule } from '@angular/forms';
+import { PaginatorComponent } from "../pagination/paginatoin.component";
 
 @Component({
   selector: 'app-products-table',
@@ -15,8 +16,9 @@ import { FormsModule } from '@angular/forms';
     TableModule,
     CurrencyPipe,
     TagModule,
-    FormsModule
-  ],
+    FormsModule,
+    PaginatorComponent
+],
   templateUrl: './products-table.component.html',
   styleUrl: './products-table.component.css'
 })
