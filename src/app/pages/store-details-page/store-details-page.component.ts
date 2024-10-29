@@ -12,6 +12,7 @@ import { ProductsTableComponent } from "../../components/products-table/products
 import { StockModalComponent } from '../../components/stock-modal/stock-modal.component';
 import { AuthService } from '../../services/auth.service';
 import { NgIf } from '@angular/common';
+import { NewStockModalComponent } from '../../components/new-stock-modal/new-stock-modal.component';
 
 @Component({
   selector: 'app-store-details-page',
@@ -117,6 +118,17 @@ export class StoreDetailsPageComponent implements OnInit {
       data: {
         storeId: Number(this.storeId),
         productId: productId
+      },
+      width: '50%',
+      height: 'auto',
+      disableClose: true
+    });
+  }
+
+  AddProductToStock(storeId: number) {
+    this.dialog.open(NewStockModalComponent, {
+      data: {
+        storeId: Number(this.storeId),
       },
       width: '50%',
       height: 'auto',
