@@ -10,6 +10,8 @@ import { ProductsListComponent } from "../../components/products-list/products-l
 import { Product } from '../../models/product/Product';
 import { ProductsTableComponent } from "../../components/products-table/products-table.component";
 import { StockModalComponent } from '../../components/stock-modal/stock-modal.component';
+import { AuthService } from '../../services/auth.service';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-store-details-page',
@@ -19,7 +21,8 @@ import { StockModalComponent } from '../../components/stock-modal/stock-modal.co
     MatButtonModule,
     ProductsListComponent,
     ProductsTableComponent,
-    RouterLink
+    RouterLink,
+    NgIf
   ],
   templateUrl: './store-details-page.component.html',
   styleUrl: './store-details-page.component.css'
@@ -33,13 +36,21 @@ export class StoreDetailsPageComponent implements OnInit {
   size: number = 10;
   totalElements: number = 0;
   totalPages: number = 0;
+  isAdmin: boolean = false;
 
   constructor(
     private router: Router,
     private activatedRouter: ActivatedRoute,
     private storeService: StoreService,
-    private dialog: MatDialog
-  ) { }
+    private dialog: MatDialog,
+    private authService: AuthService
+  ) {
+    authService.userData.subscribe({
+      next: () => {
+        this.isAdmin = authService.isAdmin();
+      }
+    });
+  }
 
   ngOnInit(): void {
     this.activatedRouter.params.subscribe(params => {

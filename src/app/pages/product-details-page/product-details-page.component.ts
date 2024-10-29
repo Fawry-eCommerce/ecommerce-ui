@@ -33,15 +33,19 @@ export class ProductDetailsPageComponent implements OnInit {
     });
   }
 
-  addToCart(product: Product) {
-
+  buyNow(product: Product) {
+    let products = JSON.parse(localStorage.getItem('products') || '[]');
+    let existingProduct = products.find((p: Product) => p.id === product.id);
+    if (!existingProduct) {
+      products.push(product);
+      localStorage.setItem('products', JSON.stringify(products));
+    }
+    console.log(products);
   }
 
   getProductById(id: number) {
     this.productService.getProduct(id).subscribe({
       next: (res) => {
-        console.log(res);
-        
         this.product = res;
       },
       error: error => {

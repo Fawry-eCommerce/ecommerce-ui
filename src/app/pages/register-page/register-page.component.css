@@ -1,0 +1,26 @@
+body {
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    color: #fff;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 15px;
+}
+
+.card-title {
+    color: #333;
+}
+
+.form-label {
+    color: #333;
+}
+
+.btn-primary {
+    background-color: #6a11cb;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #2575fc;
+}

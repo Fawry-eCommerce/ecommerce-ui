@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductCardComponent } from "../../components/product-card/product-card.component";
 import { NgFor } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { ProductsListComponent } from "../../components/products-list/products-list.component";
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../models/product/Product';
@@ -9,15 +9,15 @@ import { Product } from '../../models/product/Product';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [ProductCardComponent, NgFor, RouterModule, ProductsListComponent],
+  imports: [ProductCardComponent, NgFor, RouterLink, ProductsListComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit {
 
   products!: Product[];
-  
-  constructor(private productService: ProductService) {}
+
+  constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
     this.getProducts();

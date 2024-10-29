@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Store } from '../../models/store/store';
 import { StoreService } from '../../services/store.service';
 import { StoreCardComponent } from "../../components/store-card/store-card.component";
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { StoreModalComponent } from "../../components/store-modal/store-modal.component";
@@ -10,6 +10,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { RouterModule } from '@angular/router';
 import { TabViewModule } from 'primeng/tabview';
 import { PaginatorComponent } from '../../components/pagination/paginatoin.component';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-store-page',
@@ -21,7 +22,8 @@ import { PaginatorComponent } from '../../components/pagination/paginatoin.compo
     ButtonModule,
     StoreModalComponent,
     RouterModule,
-    PaginatorComponent
+    PaginatorComponent,
+    NgIf
   ],
   templateUrl: './store-page.component.html',
   styleUrl: './store-page.component.css'
@@ -33,10 +35,21 @@ export class StorePageComponent {
   size: number = 10;
   totalElements: number = 0;
   totalPages: number = 0;
+  isAdmin: boolean = false;
   isUpdateMode: boolean = true;
   modalVisible: boolean = false;
 
-  constructor(private storeService: StoreService, private dialog: MatDialog) { }
+  constructor(
+    private storeService: StoreService,
+    private dialog: MatDialog,
+    private authService: AuthService
+  ) { 
+    authService.userData.subscribe({
+      next: () => {
+        this.isAdmin = authService.isAdmin();
+      }
+    });
+  }
 
   ngOnInit(): void {
     this.loadStores();

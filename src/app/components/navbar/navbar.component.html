@@ -15,7 +15,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link"  routerLink="products" routerLinkActive="active">
+          <a class="nav-link" routerLink="products" routerLinkActive="active">
             <i class="bi bi-box-seam"></i> Products
           </a>
         </li>
@@ -24,13 +24,35 @@
             <i class="bi bi-shop-window"></i> Stores
           </a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="isAdmin" class="nav-item">
           <a class="nav-link" routerLink="admins" routerLinkActive="active">
-            <i class="bi bi-shop-window"></i> Admins
+            <i class="bi bi-person-badge"></i> Admins
           </a>
         </li>
       </ul>
-      <form class="d-flex" role="search">
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <li *ngIf="!isLogin" class="nav-item">
+          <a class="nav-link" routerLink="auth/login" routerLinkActive="active">
+            <i class="bi bi-box-arrow-in-right"></i> Login
+          </a>
+        </li>
+        <li *ngIf="!isLogin" class="nav-item">
+          <a class="nav-link" routerLink="auth/register" routerLinkActive="active">
+            <i class="bi bi-pencil-square"></i> Register
+          </a>
+        </li>
+        <li *ngIf="isLogin" class="nav-item">
+          <a class="nav-link">
+            {{ email }}
+          </a>
+        </li>
+        <li *ngIf="isLogin" class="nav-item">
+          <button class="nav-link" (click)="logOut()">
+            Logout
+          </button>
+        </li>
+      </ul>
+      <form class="d-flex me-3" role="search">
         <input class="form-control me-2 rounded-pill" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-light rounded-pill" type="submit">Search</button>
       </form>

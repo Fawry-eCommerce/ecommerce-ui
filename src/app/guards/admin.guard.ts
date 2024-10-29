@@ -1,6 +1,23 @@
-import { CanActivateFn } from '@angular/router';
+import { Injectable } from '@angular/core';
+import { CanActivate, Router, UrlTree } from '@angular/router';
+import { Observable } from 'rxjs';
+import { AuthService } from '../services/auth.service';
 
-export const adminGuard: CanActivateFn = (route, state) => {
-  // This is a mock implementation of an admin guard
-  return true;
-};
+@Injectable({
+  providedIn: 'root'
+})
+export class adminGuard implements CanActivate {
+
+  constructor(private router: Router, private authServie: AuthService) { };
+
+  canActivate(): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    if (this.authServie.isAdmin()) {
+      return true;
+    }
+    else {
+      this.router.navigate(['/auth/login']);
+      return false;
+    }
+  }
+
+}

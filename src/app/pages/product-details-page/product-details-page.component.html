@@ -7,12 +7,13 @@
         </mat-card-header>
         <mat-card-content>
             <div class="product-image">
-                <img src="https://provengraphics.com/wp-content/uploads/2018/02/300x300.png" alt="{{product.name}}">
+                <img [src]="product.imageURL" alt="{{product.name}}">
             </div>
             <div class="product-info">
                 <h3 class="product-price">${{product.price}}</h3>
                 <p class="product-description">{{product.description}}</p>
-                <button mat-raised-button color="primary" (click)="addToCart(product)">Add to Cart</button>
+                <p class="product-category">Category: {{product.categpruModel.name}}</p>
+                <button mat-raised-button color="primary" (click)="buyNow(product)">Buy now</button>
             </div>
         </mat-card-content>
     </mat-card>

@@ -10,7 +10,8 @@ import { Product } from '../models/product/Product';
 })
 export class ProductService {
 
-  baseUrl: string = `${environment.apiUrl}:8004/product-api`;
+  // baseUrl: string = `${environment.apiUrl}/product-api`;
+  baseUrl: string = `http://localhost:8004/product-api`;
 
   constructor(private http: HttpClient) { }
 

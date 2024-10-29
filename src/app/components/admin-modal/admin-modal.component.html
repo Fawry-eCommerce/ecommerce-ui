@@ -1,0 +1,52 @@
+<mat-dialog-content class="store-dialog-content">
+    <h2 class="dialog-title text-center">
+        Add new admin
+    </h2>
+    <form [formGroup]="adminForm" class="mt-4">
+        <div class="form-group">
+            <label for="firstName" class="form-label">First name</label>
+            <div class="input-wrapper">
+                <input type="text" required id="firstName" class="form-control" formControlName="firstName" />
+            </div>
+            <div *ngIf="adminForm.get('firstName')?.errors && adminForm.get('firstName')?.touched">
+                <small class="text-danger">First name is required.</small>
+            </div>
+        </div>
+        <div class="form-group mt-4">
+            <label for="lastName" class="form-label">Last name</label>
+            <div class="input-wrapper">
+                <input type="text" required id="lastName" class="form-control" formControlName="lastName" />
+            </div>
+            <div *ngIf="adminForm.get('lastName')?.errors && adminForm.get('lastName')?.touched">
+                <small class="text-danger">Last name is required.</small>
+            </div>
+        </div>
+        <div class="form-group mt-4">
+            <label for="lastName" class="form-label">Email</label>
+            <div class="input-wrapper">
+                <input type="email" required id="email" class="form-control" formControlName="email" />
+            </div>
+            <small *ngIf="adminForm.get('email')?.errors && adminForm.get('email')?.touched" class="text-danger">Email
+                is required.</small>
+            <small *ngIf="adminForm.get('email')?.errors?.['email']">Invalid email format.</small>
+        </div>
+        <div class="form-group mt-4">
+            <label for="password" class="form-label">Password</label>
+            <div class="input-wrapper">
+                <input type="text" required id="password" class="form-control" formControlName="password" />
+            </div>
+            <div *ngIf="adminForm.get('password')?.errors && adminForm.get('password')?.touched">
+                <small class="text-danger">Password is required.</small>
+            </div>
+        </div>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions class="dialog-actions justify-content-end">
+    <button type="button" class="btn btn-light me-2" (click)="onCancel()">
+        Cancel
+    </button>
+    <button type="submit" class="btn btn-primary" (click)="onSubmit()" [disabled]="adminForm.invalid">
+        Add
+    </button>
+</mat-dialog-actions>

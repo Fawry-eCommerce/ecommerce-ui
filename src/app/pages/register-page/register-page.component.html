@@ -1,0 +1,68 @@
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="card shadow-lg p-4" style="width: 400px;">
+        <div class="card-body">
+            <h3 class="card-title text-center mb-4">Register</h3>
+            <form [formGroup]="registerForm">
+                <div class="mb-3">
+                    <label for="firstName" class="form-label">First name</label>
+                    <input type="firstName" class="form-control" id="firstName" placeholder="Enter your First name"
+                        formControlName="firstName" required>
+                    <div *ngIf="registerForm.get('firstName')?.invalid && registerForm.get('firstName')?.touched"
+                        class="text-danger">
+                        <small *ngIf="registerForm.get('firstName')?.errors?.['required']">First name is
+                            required.</small>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="lastName" class="form-label">Last name</label>
+                    <input type="lastName" class="form-control" id="lastName" placeholder="Enter your Last name"
+                        formControlName="lastName" required>
+                    <div *ngIf="registerForm.get('lastName')?.invalid && registerForm.get('lastName')?.touched"
+                        class="text-danger">
+                        <small *ngIf="registerForm.get('lastName')?.errors?.['required']">Last name is required.</small>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter your email"
+                        formControlName="email" required>
+                    <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched"
+                        class="text-danger">
+                        <small *ngIf="registerForm.get('email')?.errors?.['required']">Email is required.</small>
+                        <small *ngIf="registerForm.get('email')?.errors?.['email']">Invalid email format.</small>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Enter your password"
+                        formControlName="password" required>
+                    <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched"
+                        class="text-danger">
+                        <small *ngIf="registerForm.get('password')?.errors?.['required']">Password is required.</small>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="role" class="form-label">Role</label>
+                    <select class="form-select" id="role" formControlName="role" required>
+                        <option value="" disabled>Select your role</option>
+                        <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
+                    </select>
+                    <div *ngIf="registerForm.get('role')?.invalid && registerForm.get('role')?.touched"
+                        class="text-danger">
+                        <small *ngIf="registerForm.get('role')?.errors?.['required']">Role is required.</small>
+                    </div>
+                </div>
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary rounded-pill" (click)="register()"
+                        [disabled]="registerForm.invalid">Register</button>
+                </div>
+            </form>
+            <div *ngIf="errorMessage" class="text-danger text-center mt-3">
+                {{ errorMessage }}
+            </div>
+            <div class="text-center mt-3">
+                <a href="auth/login" class="text-decoration-none">Already have an account? Login</a>
+            </div>
+        </div>
+    </div>
+</div>

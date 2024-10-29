@@ -12,14 +12,16 @@
                         <th>Image</th>
                         <th>Description</th>
                         <th>Stock</th>
-                        <th>Actions</th>
+                        <th *ngIf="isAdmin">Actions</th>
                     </tr>
                 </ng-template>
     
                 <ng-template pTemplate="body" let-product let-rowIndex="rowIndex">
                     <tr style="height:46px">
                         <td>{{ rowIndex + 1 }}</td>
-                        <td>{{ product.name }}</td>
+                        <td>
+                            <a href="/products/{{product.id}}">{{ product.name }}</a>
+                        </td>
                         <td>{{ product.price | currency : 'USD' }}</td>
                         <td>{{ product.categoryModel.name }}</td>
                         <td>
@@ -33,7 +35,7 @@
                             }
                         </td>
                         <td>{{ product.stockQuantity }}</td>
-                        <td>
+                        <td *ngIf="isAdmin">
                             <div class="button-group">
                                 <button class="btn btn-success btn-sm m-2" (click)="emitProductId(product.id)">
                                     <i class="fas fa-plus-circle"></i> +

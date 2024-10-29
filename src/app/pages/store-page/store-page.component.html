@@ -1,7 +1,7 @@
 <div class="container my-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2 class="text-center mb-0">Our Stores</h2>
-        <button class="btn btn-primary btn-sm" (click)="openCreateModal()">
+        <button *ngIf="isAdmin" class="btn btn-primary btn-sm" (click)="openCreateModal()">
             <i class="bi bi-plus-circle"></i> Add Store
         </button>
     </div>
@@ -24,10 +24,10 @@
                 <td class="text-center">
                     <div class="icon-container">
                         <a class="btn btn-secondary btn-sm" [routerLink]="store.id">...</a>
-                        <button class="icon-button u-btn" (click)="openUpdateModal(store)">
+                        <button  *ngIf="isAdmin"  class="icon-button u-btn" (click)="openUpdateModal(store)">
                             <i class="bi bi-pencil-square" title="Update"></i>
                         </button>
-                        <button class="icon-button d-btn" (click)="deleteStore(store.id)">
+                        <button  *ngIf="isAdmin"  class="icon-button d-btn" (click)="deleteStore(store.id)">
                             <i class="bi bi-trash" title="Delete"></i>
                         </button>
                     </div>
