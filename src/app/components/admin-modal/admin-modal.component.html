@@ -39,6 +39,17 @@
                 <small class="text-danger">Password is required.</small>
             </div>
         </div>
+        <div class="mb-4">
+            <label for="role" class="form-label">Role</label>
+            <select class="form-select" id="role" formControlName="role" required>
+                <option value="" disabled>Select your role</option>
+                <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
+            </select>
+            <div *ngIf="adminForm.get('role')?.invalid && adminForm.get('role')?.touched"
+                class="text-danger">
+                <small *ngIf="adminForm.get('role')?.errors?.['required']">Role is required.</small>
+            </div>
+        </div>
     </form>
 </mat-dialog-content>
 

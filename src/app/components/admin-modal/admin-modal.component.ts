@@ -1,9 +1,8 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogActions, MatDialogContent } from '@angular/material/dialog';
-import { Store } from '../../models/store/store';
+import { MatDialog, MatDialogActions, MatDialogContent } from '@angular/material/dialog';
 import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
-import { NgIf } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { AdminService } from '../../services/admin.service';
 
@@ -19,7 +18,8 @@ import { AdminService } from '../../services/admin.service';
     MatDialogActions,
     MatDialogContent,
     MatError,
-    MatIconModule
+    MatIconModule,
+    NgFor
   ],
   templateUrl: './admin-modal.component.html',
   styleUrl: './admin-modal.component.css'
