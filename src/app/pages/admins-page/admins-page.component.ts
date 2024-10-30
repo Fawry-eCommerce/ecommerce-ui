@@ -46,8 +46,16 @@ export class AdminsPageComponent implements OnInit {
     });
   }
 
-  addAdmin() {
-    
+  toggleAdminActivation(adminId: any): void {
+    console.log('admin id from page', adminId);
+    this.adminService.toggleAdminStatus(adminId).subscribe({
+      next: (res: any) => {
+        console.log(res);
+      },
+      error: (error) => {
+        console.error(error);
+      }
+    });
   }
 
 }

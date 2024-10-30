@@ -30,4 +30,12 @@ export class AdminService {
     return this.http.post(`${this.baseUrl}`, admin, { headers: headers });
   }
 
+  toggleAdminStatus(adminId: number): Observable<any> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${localStorage.getItem('token')}`,
+      'Content-Type': 'application/json'
+    });
+    return this.http.put(`${this.baseUrl}/toggle-active/${adminId}`, {}, { headers: headers });
+  }
+
 }

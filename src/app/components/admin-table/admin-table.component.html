@@ -18,14 +18,16 @@
                         <tr *ngFor="let admin of admins; let rowIndex = index">
                             <td>{{ rowIndex + 1 }}</td>
                             <td>
-                                <span>{{ admin.firstName }}  {{ admin.lastName }}</span>
+                                <span>{{ admin.firstName }} {{ admin.lastName }}</span>
                             </td>
                             <td>{{ admin.email }}</td>
                             <td [ngClass]="{'text-success': admin.active, 'text-danger': !admin.active}">
                                 {{ admin.active? "Active" : "Not Active" }}
                             </td>
                             <td>{{ admin.role }}</td>
-                            <td></td>
+                            <td>
+                                <input type="checkbox" [checked]="admin.active" (change)="toggleAdminActivation(admin.id)">
+                            </td>
                         </tr>
                     </tbody>
                 </table>
