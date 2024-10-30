@@ -2,6 +2,9 @@
     <h2 class="dialog-title text-center">
         Add new admin
     </h2>
+    <div *ngIf="errorMessage" class="text-danger text-center mt-3">
+        {{ errorMessage }}
+    </div>
     <form [formGroup]="adminForm" class="mt-4">
         <div class="form-group">
             <label for="firstName" class="form-label">First name</label>
@@ -45,8 +48,7 @@
                 <option value="" disabled>Select your role</option>
                 <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
             </select>
-            <div *ngIf="adminForm.get('role')?.invalid && adminForm.get('role')?.touched"
-                class="text-danger">
+            <div *ngIf="adminForm.get('role')?.invalid && adminForm.get('role')?.touched" class="text-danger">
                 <small *ngIf="adminForm.get('role')?.errors?.['required']">Role is required.</small>
             </div>
         </div>

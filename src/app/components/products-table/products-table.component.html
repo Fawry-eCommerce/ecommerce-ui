@@ -25,7 +25,7 @@
                             <td>{{ product.price | currency: 'USD' }}</td>
                             <td>{{ product.categoryModel.name }}</td>
                             <td>
-                                <img [src]="product.imageURL" alt="Product Image" class="product-image img-thumbnail">
+                                <img [src]="product.imageUrl" alt="Product Image" class="product-image img-thumbnail">
                             </td>
                             <td>
                                 {{ product.description.length > 30 ? (product.description | slice:0:30) + '...' :

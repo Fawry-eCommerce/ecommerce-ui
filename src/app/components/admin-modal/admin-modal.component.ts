@@ -28,6 +28,7 @@ export class AdminModalComponent {
 
   adminForm!: FormGroup;
   roles: any[] = [];
+  errorMessage: string = '';
 
   constructor(
     private fb: FormBuilder,
@@ -53,7 +54,7 @@ export class AdminModalComponent {
         this.dialog.closeAll();
       },
       error: (error) => {
-        console.log(error);
+        this.errorMessage = error.error.message;
       }
     });
   }

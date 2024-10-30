@@ -11,6 +11,7 @@
                             <th>Email</th>
                             <th>Active</th>
                             <th>Role</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -20,8 +21,11 @@
                                 <span>{{ admin.firstName }}  {{ admin.lastName }}</span>
                             </td>
                             <td>{{ admin.email }}</td>
-                            <td>{{ admin.active? "Active" : "Not Active" }}</td>
+                            <td [ngClass]="{'text-success': admin.active, 'text-danger': !admin.active}">
+                                {{ admin.active? "Active" : "Not Active" }}
+                            </td>
                             <td>{{ admin.role }}</td>
+                            <td></td>
                         </tr>
                     </tbody>
                 </table>

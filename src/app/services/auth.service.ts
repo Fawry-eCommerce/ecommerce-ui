@@ -10,9 +10,7 @@ import { environment } from '../environment/environment';
 })
 export class AuthService {
 
-  // baseUrl: string = `${environment.apiUrl}/admin-api/auth`;
-  baseUrl: string = `http://localhost:8008/admin-api/auth`;
-
+  baseUrl: string = `${environment.apiUrl}/admin-api/auth`;
 
   userData = new BehaviorSubject(null);
 

@@ -1,4 +1,4 @@
-import { NgFor, NgIf } from '@angular/common';
+import { NgClass, NgFor, NgIf } from '@angular/common';
 import { Component, EventEmitter, Input } from '@angular/core';
 import { TableModule } from 'primeng/table';
 
@@ -8,7 +8,8 @@ import { TableModule } from 'primeng/table';
   imports: [
     NgIf,
     TableModule,
-    NgFor
+    NgFor,
+    NgClass
   ],
   templateUrl: './admin-table.component.html',
   styleUrl: './admin-table.component.css'

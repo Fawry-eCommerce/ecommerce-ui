@@ -18,3 +18,13 @@
 .btn-group .btn:last-child {
     margin-right: 0;
 }
+
+.text-success {
+    color: green;
+    font-weight: bold;
+}
+
+.text-danger {
+    color: red;
+    font-weight: bold;
+}

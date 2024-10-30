@@ -8,8 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class AdminService {
 
-  // baseUrl: string = `${environment.apiUrl}/admin-api/admins`;
-  baseUrl: string = `http://localhost:8008/admin-api/admins`;
+  baseUrl: string = `${environment.apiUrl}/admin-api/admins`;
 
   constructor(
     private http: HttpClient

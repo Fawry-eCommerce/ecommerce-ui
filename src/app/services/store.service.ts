@@ -15,8 +15,7 @@ import { AuthService } from './auth.service';
 })
 export class StoreService {
 
-  // baseUrl: string = `${environment.apiUrl}/store-api`;
-  baseUrl: string = `http://localhost:8005/store-api`;
+  baseUrl: string = `${environment.apiUrl}/store-api`;
 
   headers: HttpHeaders = new HttpHeaders();
 
