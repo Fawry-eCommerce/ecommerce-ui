@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ProductCardComponent } from "../product-card/product-card.component";
-import { CurrencyPipe, NgFor, NgIf } from '@angular/common';
+import { CurrencyPipe, NgClass, NgFor, NgIf, SlicePipe } from '@angular/common';
 import { TableModule } from 'primeng/table';
 import { TagModule } from 'primeng/tag';
 import { Product } from '../../models/product/Product';
@@ -19,7 +19,9 @@ import { AuthService } from '../../services/auth.service';
     TagModule,
     FormsModule,
     PaginatorComponent,
-    NgIf
+    NgIf,
+    SlicePipe,
+    NgClass
   ],
   templateUrl: './products-table.component.html',
   styleUrl: './products-table.component.css'

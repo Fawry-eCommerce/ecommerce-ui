@@ -9,7 +9,8 @@
 }
 
 .add-action-bg {
-    background-color: #e8f5e9; /* Light green background */
+    background-color: #e8f5e9;
+    /* Light green background */
     color: green;
     font-weight: bold;
     padding: 2px 4px;
@@ -17,7 +18,35 @@
 }
 
 .consume-action-bg {
-    background-color: #ffebee; /* Light red background */
+    background-color: #ffebee;
+    /* Light red background */
     color: red;
     font-weight: bold;
+}
+
+.p-table {
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.p-table tbody tr:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.text-decoration-none {
+    text-decoration: none;
+}
+
+.add-action-bg {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.consume-action-bg {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 5px 10px;
+    border-radius: 5px;
 }

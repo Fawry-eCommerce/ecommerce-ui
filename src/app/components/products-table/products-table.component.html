@@ -1,57 +1,58 @@
 <div class="container my-5">
     <h2 class="text-center mb-4">{{ title }}</h2>
     <div class="row">
-        @if (products.length > 0) {
-            <p-table [value]="products">
-                <ng-template pTemplate="header">
-                    <tr>
-                        <th>#</th>
-                        <th>Name</th>
-                        <th>Price</th>
-                        <th>Category</th>
-                        <th>Image</th>
-                        <th>Description</th>
-                        <th>Stock</th>
-                        <th *ngIf="isAdmin">Actions</th>
-                    </tr>
-                </ng-template>
-    
-                <ng-template pTemplate="body" let-product let-rowIndex="rowIndex">
-                    <tr style="height:46px">
-                        <td>{{ rowIndex + 1 }}</td>
-                        <td>
-                            <a href="/products/{{product.id}}">{{ product.name }}</a>
-                        </td>
-                        <td>{{ product.price | currency : 'USD' }}</td>
-                        <td>{{ product.categoryModel.name }}</td>
-                        <td>
-                            <img [src]="product.imageURL" alt="Product Image" class="product-image">
-                        </td>
-                        <td>
-                            @if (product.description.length > 30) {
-                                {{ product.description.substring(0, 30) }}...
-                            } @else {
-                                {{ product.description }}
-                            }
-                        </td>
-                        <td>{{ product.stockQuantity }}</td>
-                        <td *ngIf="isAdmin">
-                            <div class="button-group">
-                                <button class="btn btn-success btn-sm m-2" (click)="emitProductId(product.id)">
-                                    <i class="fas fa-plus-circle"></i> +
-                                </button>
-                                <a class="btn btn-info btn-sm" href="/products/{{product.id}}">
-                                    <i class="fas fa-info-circle"></i> ..
-                                </a>
-                            </div>
-                        </td>
-                    </tr>
-                </ng-template>
-            </p-table>
-        }@else {
+        <div *ngIf="products.length > 0; else noProducts">
+            <div class="table-responsive">
+                <table class="table table-hover table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Category</th>
+                            <th>Image</th>
+                            <th>Description</th>
+                            <th>Stock</th>
+                            <th *ngIf="isAdmin">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let product of products; let rowIndex = index">
+                            <td>{{ rowIndex + 1 }}</td>
+                            <td>
+                                <a href="/products/{{product.id}}" class="text-decoration-none">{{ product.name }}</a>
+                            </td>
+                            <td>{{ product.price | currency: 'USD' }}</td>
+                            <td>{{ product.categoryModel.name }}</td>
+                            <td>
+                                <img [src]="product.imageURL" alt="Product Image" class="product-image img-thumbnail">
+                            </td>
+                            <td>
+                                {{ product.description.length > 30 ? (product.description | slice:0:30) + '...' :
+                                product.description }}
+                            </td>
+                            <td [ngClass]="{'text-success': product.stockQuantity > 0, 'text-danger': product.stockQuantity === 0}">
+                                {{ product.stockQuantity > 0 ? 'In Stock' : 'Out of Stock' }}
+                              </td>
+                            <td *ngIf="isAdmin">
+                                <div class="btn-group" role="group">
+                                    <button class="btn btn-success btn-sm" (click)="emitProductId(product.id)">
+                                        <i class="fas fa-plus-circle"></i> +
+                                    </button>
+                                    <a class="btn btn-info btn-sm" href="/products/{{product.id}}">
+                                        <i class="fas fa-info-circle"></i> Details
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <ng-template #noProducts>
             <div class="alert alert-warning text-center w-100">
                 No products found
             </div>
-        }
+        </ng-template>
     </div>
 </div>

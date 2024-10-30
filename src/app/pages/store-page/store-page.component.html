@@ -1,38 +1,42 @@
 <div class="container my-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2 class="text-center mb-0">Our Stores</h2>
-        <button *ngIf="isAdmin" class="btn btn-primary btn-sm" (click)="openCreateModal()">
-            <i class="bi bi-plus-circle"></i> Add Store
-        </button>
+      <h2 class="text-center mb-0">Our Stores</h2>
+      <button *ngIf="isAdmin" class="btn btn-primary btn-sm" (click)="openCreateModal()">
+        <i class="bi bi-plus-circle"></i> Add Store
+      </button>
     </div>
     <app-pagination [totalElements]="totalElements" [totalPages]="totalPages" [pageSize]="size" (pageChange)="onPageChange($event)"></app-pagination>
-
-    <p-table [value]="stores" styleClass="p-datatable-striped custom-table" [tableStyle]="{ 'min-width': '50rem' }">
-        <ng-template pTemplate="header">
-            <tr>
-                <th class="text-center">#</th>
-                <th class="text-center">Name</th>
-                <th class="text-center">Location</th>
-                <th class="text-center">Actions</th>
-            </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-store let-i="rowIndex">
-            <tr>
-                <td class="text-center">{{ i + 1 }}</td>
-                <td class="text-center">{{ store.name }}</td>
-                <td class="text-center">{{ store.location }}</td>
-                <td class="text-center">
-                    <div class="icon-container">
-                        <a class="btn btn-secondary btn-sm" [routerLink]="store.id">...</a>
-                        <button  *ngIf="isAdmin"  class="icon-button u-btn" (click)="openUpdateModal(store)">
-                            <i class="bi bi-pencil-square" title="Update"></i>
-                        </button>
-                        <button  *ngIf="isAdmin"  class="icon-button d-btn" (click)="deleteStore(store.id)">
-                            <i class="bi bi-trash" title="Delete"></i>
-                        </button>
-                    </div>
-                </td>
-            </tr>
-        </ng-template>
-    </p-table>
-</div>
+  
+    <div class="table-responsive">
+      <table class="table table-hover table-bordered table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th class="text-center">#</th>
+            <th class="text-center">Name</th>
+            <th class="text-center">Location</th>
+            <th class="text-center">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let store of stores; let i = index">
+            <td class="text-center">{{ i + 1 }}</td>
+            <td class="text-center">{{ store.name }}</td>
+            <td class="text-center">{{ store.location }}</td>
+            <td class="text-center">
+              <div class="btn-group" role="group">
+                <a class="btn btn-info btn-sm" href="/stores/{{store.id}}">
+                  <i class="bi bi-info-circle"></i> Details
+                </a>
+                <button *ngIf="isAdmin" class="btn btn-warning btn-sm" (click)="openUpdateModal(store)">
+                  <i class="bi bi-pencil-square"></i> Update
+                </button>
+                <button *ngIf="isAdmin" class="btn btn-danger btn-sm" (click)="deleteStore(store.id)">
+                  <i class="bi bi-trash"></i> Delete
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

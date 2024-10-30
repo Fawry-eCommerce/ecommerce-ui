@@ -1,19 +1,28 @@
-<div class="product-details-page">
-    <mat-card>
-        <mat-card-header>
-            <mat-card-title class="text-center">
-                <h2>{{product.name}}</h2>
+<div class="container my-5">
+    <mat-card class="product-details-card shadow-lg">
+        <mat-card-header class="text-center">
+            <mat-card-title>
+                <h2>{{ product.name }}</h2>
             </mat-card-title>
         </mat-card-header>
         <mat-card-content>
-            <div class="product-image">
-                <img [src]="product.imageURL" alt="{{product.name}}">
-            </div>
-            <div class="product-info">
-                <h3 class="product-price">${{product.price}}</h3>
-                <p class="product-description">{{product.description}}</p>
-                <p class="product-category">Category: {{product.categpruModel.name}}</p>
-                <button mat-raised-button color="primary" (click)="buyNow(product)">Buy now</button>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="product-image">
+                        <img [src]="product.imageURL"
+                            alt="{{ product.name }}" class="img-fluid rounded">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="product-info">
+                        <h3 class="product-price">${{ product.price }}</h3>
+                        <p class="product-description">{{ product.description }}</p>
+                        <p class="product-category">Category: {{ product.categoryModel.name }}</p>
+                        <button mat-raised-button color="primary" class="buy-now-button" (click)="buyNow(product)">
+                            <i class="bi bi-cart"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
             </div>
         </mat-card-content>
     </mat-card>

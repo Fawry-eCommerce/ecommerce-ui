@@ -1,0 +1,20 @@
+.p-table {
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.p-table tbody tr:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.text-decoration-none {
+    text-decoration: none;
+}
+
+.btn-group .btn {
+    margin-right: 5px;
+}
+
+.btn-group .btn:last-child {
+    margin-right: 0;
+}

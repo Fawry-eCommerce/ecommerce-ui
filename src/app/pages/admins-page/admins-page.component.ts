@@ -8,8 +8,9 @@ import { AdminModalComponent } from '../../components/admin-modal/admin-modal.co
   selector: 'app-admins-page',
   standalone: true,
   imports: [
-    AdminTableComponent
-  ],
+    AdminTableComponent,
+    AdminModalComponent
+],
   templateUrl: './admins-page.component.html',
   styleUrl: './admins-page.component.css'
 })

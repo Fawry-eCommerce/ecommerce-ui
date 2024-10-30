@@ -1,34 +1,36 @@
 <div class="container my-5">
-    <h2 class="text-center mb-4">Admins</h2>
+    <h2 class="text-center mb-4">{{ title }}</h2>
     <div class="row">
-        @if (admins.length > 0) {
-        <p-table [value]="admins">
-            <ng-template pTemplate="header">
-                <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Active</th>
-                    <th>Role</th>
-                </tr>
-            </ng-template>
-
-            <ng-template pTemplate="body" let-admin let-rowIndex="rowIndex">
-                <tr style="height:46px">
-                    <td>{{ rowIndex + 1 }}</td>
-                    <td>
-                        <a href="/admins/{{admin.id}}">{{ admin.name }}</a>
-                    </td>
-                    <td>{{ admin.email }}</td>
-                    <td>{{ admin.active? "Active" : "Not Active" }}</td>
-                    <td>{{admin.role}}</td>
-                </tr>
-            </ng-template>
-        </p-table>
-        }@else {
-        <div class="alert alert-warning text-center w-100">
-            No admins found
+        <div *ngIf="admins.length > 0; else noadmins">
+            <div class="table-responsive">
+                <table class="table table-hover table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Active</th>
+                            <th>Role</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let admin of admins; let rowIndex = index">
+                            <td>{{ rowIndex + 1 }}</td>
+                            <td>
+                                <span>{{ admin.firstName }}  {{ admin.lastName }}</span>
+                            </td>
+                            <td>{{ admin.email }}</td>
+                            <td>{{ admin.active? "Active" : "Not Active" }}</td>
+                            <td>{{ admin.role }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-        }
+        <ng-template #noadmins>
+            <div class="alert alert-warning text-center w-100">
+                No admins found
+            </div>
+        </ng-template>
     </div>
 </div>

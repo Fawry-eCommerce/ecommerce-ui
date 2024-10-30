@@ -11,6 +11,7 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
 import { authenticatedGuard } from './guards/authenticated.guard';
 import { AdminsPageComponent } from './pages/admins-page/admins-page.component';
+import { CartPageComponent } from './pages/cart-page/cart-page.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -36,6 +37,10 @@ export const routes: Routes = [
             { path: ':id', component: StoreDetailsPageComponent },
             { path: ':id/history', component: StoreHistoryPageComponent, canActivate: [authenticatedGuard, adminGuard] }
         ]
+    },
+    {
+        path: 'cart',
+        component: CartPageComponent
     },
     {
         path: 'auth',

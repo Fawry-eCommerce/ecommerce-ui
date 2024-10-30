@@ -1,9 +1,19 @@
 .product-image {
-    width: 50px; /* Fixed width */
-    height: 50px; /* Fixed height */
-    object-fit: cover; /* Ensures the image covers the entire area without distortion */
-    border-radius: 5px; /* Optional: Add rounded corners */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     display: block;
-    margin: 0 auto; /* Center the image horizontally */
+    margin: 0 auto;
+}
+
+.text-success {
+    color: #28a745 !important;
+    font-weight: bold;
+}
+
+.text-danger {
+    color: #dc3545 !important;
+    font-weight: bold;
 }

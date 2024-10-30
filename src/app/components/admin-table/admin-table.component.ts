@@ -1,4 +1,4 @@
-import { NgIf } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { Component, EventEmitter, Input } from '@angular/core';
 import { TableModule } from 'primeng/table';
 
@@ -7,7 +7,8 @@ import { TableModule } from 'primeng/table';
   standalone: true,
   imports: [
     NgIf,
-    TableModule
+    TableModule,
+    NgFor
   ],
   templateUrl: './admin-table.component.html',
   styleUrl: './admin-table.component.css'
@@ -15,7 +16,7 @@ import { TableModule } from 'primeng/table';
 export class AdminTableComponent {
 
   @Input() admins: any[] = [];
-  @Input() title = 'All Products';
+  @Input() title = 'All Admins';
   adminIdEmitter = new EventEmitter<number>();
 
   constructor() {}

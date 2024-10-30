@@ -1,18 +1,29 @@
 <div class="container my-5">
-    <mat-card class="store-details-card">
-        <mat-card-header class="centered-header">
-            <div class="header-content">
-                <mat-card-title>{{ store.name }}</mat-card-title>
-                <mat-card-subtitle>{{ store.location }}</mat-card-subtitle>
-            </div>
-        </mat-card-header>
-        <mat-card-actions>
-            <button *ngIf="isAdmin" mat-button color="primary" (click)="AddProductToStock(store.id)">Add Product</button>
-            <a *ngIf="isAdmin" mat-button color="accent" routerLink="history">History</a>
-            <button *ngIf="isAdmin" mat-button color="primary" (click)="openUpdateModal(store)">Edit</button>
-            <button *ngIf="isAdmin" mat-button color="warn" (click)="deleteStore(store.id)">Delete</button>
-        </mat-card-actions>
+    <mat-card class="store-details-card shadow-lg">
+      <mat-card-header class="centered-header">
+        <div class="header-content">
+          <mat-card-title>{{ store.name }}</mat-card-title>
+          <mat-card-subtitle>{{ store.location }}</mat-card-subtitle>
+        </div>
+      </mat-card-header>
+      <mat-card-content>
+        <p class="store-description"></p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button *ngIf="isAdmin" mat-raised-button color="primary" (click)="AddProductToStock(store.id)">
+          <i class="bi bi-plus-circle"></i> Add Product
+        </button>
+        <a *ngIf="isAdmin" mat-raised-button color="accent" routerLink="history">
+          <i class="bi bi-clock-history"></i> History
+        </a>
+        <button *ngIf="isAdmin" mat-raised-button color="primary" (click)="openUpdateModal(store)">
+          <i class="bi bi-pencil-square"></i> Edit
+        </button>
+        <button *ngIf="isAdmin" mat-raised-button color="warn" (click)="deleteStore(store.id)">
+          <i class="bi bi-trash"></i> Delete
+        </button>
+      </mat-card-actions>
     </mat-card>
-</div>
-
-<app-products-table [products]="products" title="Store {{ store.name }} Products" (productIdEmitter)="handleProductId($event)"></app-products-table>
+  </div>
+  
+  <app-products-table [products]="products" title="Store {{ store.name }} Products" (productIdEmitter)="handleProductId($event)"></app-products-table>

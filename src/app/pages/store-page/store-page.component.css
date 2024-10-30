@@ -11,6 +11,23 @@ h2 {
     margin-bottom: 20px;
 }
 
+.table {
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .table-hover tbody tr:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .btn-group .btn {
+    margin-right: 5px;
+  }
+  
+  .btn-group .btn:last-child {
+    margin-right: 0;
+  }
+
 .btn-primary {
     display: flex;
     align-items: center;

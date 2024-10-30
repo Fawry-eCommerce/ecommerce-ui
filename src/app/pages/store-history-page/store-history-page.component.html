@@ -1,39 +1,42 @@
 <div class="container my-5">
-    <h2 class="text-center mb-4">All histories</h2>
-    <app-pagination [totalElements]="totalElements" [totalPages]="totalPages" [pageSize]="size" (pageChange)="onPageChange($event)"></app-pagination>
+    <h2 class="text-center mb-4">All Histories</h2>
+    <app-pagination [totalElements]="totalElements" [totalPages]="totalPages" [pageSize]="size"
+        (pageChange)="onPageChange($event)"></app-pagination>
     <div class="row">
-        @if (storeHistories.length > 0) {
-        <p-table [value]="storeHistories">
-            <ng-template pTemplate="header">
-                <tr>
-                    <th pResizableColumn>ID</th>
-                    <th pResizableColumn>Product ID</th>
-                    <th pResizableColumn>Quantity</th>
-                    <th pResizableColumn>Consumer Email</th>
-                    <th pResizableColumn>Action</th>
-                    <th pResizableColumn>Date</th>
-                </tr>
-            </ng-template>
-
-            <ng-template pTemplate="body" let-storeHistory let-rowIndex="rowIndex">
-                <tr style="height:46px" class="center-text">
-                    <td>{{storeHistory.id}}</td>
-                    <td><a href="/products/{{storeHistory.productId}}">{{storeHistory.productId}}</a></td>
-                    <td>{{storeHistory.quantityChanged}}</td>
-                    <td>{{storeHistory.consumerEmail}}</td>
-                    <td>
-                        <span [ngClass]="{'add-action-bg': storeHistory.actionType === 'ADD', 'consume-action-bg': storeHistory.actionType === 'CONSUME'}">
-                            {{storeHistory.actionType}}
-                        </span>
-                    </td>
-                    <td>{{storeHistory.createdAt | date: 'medium'}}</td>
-                </tr>
-            </ng-template>
-        </p-table>
-        }@else {
-        <div class="alert alert-warning text-center w-100">
-            No histories found
+        <div *ngIf="storeHistories.length > 0; else noHistories">
+            <p-table [value]="storeHistories" [paginator]="true" [rows]="10" [responsiveLayout]="'scroll'">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th pResizableColumn>ID</th>
+                        <th pResizableColumn>Product ID</th>
+                        <th pResizableColumn>Quantity</th>
+                        <th pResizableColumn>Consumer Email</th>
+                        <th pResizableColumn>Action</th>
+                        <th pResizableColumn>Date</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-storeHistory let-rowIndex="rowIndex">
+                    <tr style="height:46px" class="center-text">
+                        <td>{{storeHistory.id}}</td>
+                        <td><a href="/products/{{storeHistory.productId}}"
+                                class="text-decoration-none">{{storeHistory.productId}}</a></td>
+                        <td>{{storeHistory.quantityChanged}}</td>
+                        <td>{{storeHistory.consumerEmail}}</td>
+                        <td>
+                            <span
+                                [ngClass]="{'add-action-bg': storeHistory.actionType === 'ADD', 'consume-action-bg': storeHistory.actionType === 'CONSUME'}">
+                                {{storeHistory.actionType}}
+                            </span>
+                        </td>
+                        <td>{{storeHistory.createdAt | date: 'medium'}}</td>
+                    </tr>
+                </ng-template>
+            </p-table>
         </div>
-        }
+        <ng-template #noHistories>
+            <div class="alert alert-warning text-center w-100">
+                No histories found
+            </div>
+        </ng-template>
     </div>
 </div>

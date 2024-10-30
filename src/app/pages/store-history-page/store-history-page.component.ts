@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { StoreHistory } from '../../models/store/store-history';
 import { TableModule } from 'primeng/table';
 import { MatCard, MatCardContent, MatCardHeader, MatCardTitle } from '@angular/material/card';
-import { DatePipe, NgClass } from '@angular/common';
+import { DatePipe, NgClass, NgIf } from '@angular/common';
 import { Page } from '../../models/page';
 import { PaginatorComponent } from '../../components/pagination/paginatoin.component';
 
@@ -20,7 +20,8 @@ import { PaginatorComponent } from '../../components/pagination/paginatoin.compo
     MatCardContent,
     DatePipe,
     PaginatorComponent,
-    NgClass
+    NgClass,
+    NgIf
 ],
   templateUrl: './store-history-page.component.html',
   styleUrl: './store-history-page.component.css'

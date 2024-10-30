@@ -8,6 +8,6 @@ export interface Product {
     price: number;
     imageURL: string;
     description: string;
-    categpruModel: Cateogry;
+    categoryModel: Cateogry;
     stockQuantity: number;
 }
